@@ -65,10 +65,10 @@ def get_clues(guess, secret_num):
 
     clues = []
 
-    for i in range(len(guess)):
-        if guess[i] == secret_num[i]:
+    for index, entry in enumerate(guess):
+        if entry == secret_num[index]:
             clues.append("Fermi")
-        elif guess[i] in secret_num:
+        elif entry in secret_num:
             clues.append("Pico")
 
     if len(clues) == 0:
