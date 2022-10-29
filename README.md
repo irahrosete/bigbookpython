@@ -7,3 +7,4 @@ https://alsweigart.com/
 
 1. Bagels
 2. Birthday Paradox
+3. Bitmap Message
