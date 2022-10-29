@@ -7,7 +7,8 @@ for groups of different sizes. We call these types of experiments, in which we c
 random trials to understand the likely outcomes, Monte Carlo experiments. You can find out more
 about the Birthday Paradox at https://en.wikipedia.org/wiki/Birthday_problem."""
 
-import datetime, random
+import datetime
+import random
 
 # Display intro
 print("""Birthday Paradox
@@ -64,7 +65,7 @@ for i, birthday in enumerate(birthdays):
     if i != 0:
         print(", ",  end="")
     month_name = MONTHS[birthday.month - 1]
-    date_text = "{} {}".format(month_name, birthday.day)
+    date_text = f"{month_name} {birthday.day}"
     print(date_text, end="")
 print()
 print()
@@ -73,9 +74,10 @@ print()
 match = get_match(birthdays)
 
 # Display the results
-if match != None:
+if match is not None:
     month_name = MONTHS[match.month - 1]
-    date_text = "{} {}".format(month_name, match.day)
+    # date_text = "{} {}".format(month_name, match.day)
+    date_text = f"{month_name} {match.day}"
     print("Multiple people have a birthday on", date_text)
 else:
     print("There are no matching birthdays")
@@ -92,7 +94,7 @@ for i in range(100000):
     if i % 10000 == 0:
         print(i, "simulations run...")
     birthdays = get_birthdays(num_bdays)
-    if get_match(birthdays) != None:
+    if get_match(birthdays) is not None:
         sim_match = sim_match + 1
 print("100,000 simulations run.")
 
