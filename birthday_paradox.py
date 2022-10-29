@@ -1,3 +1,6 @@
+# pylint: disable=invalid-name
+# pylint: disable=unused-variable
+
 """The Birthday Paradox, also called the Birthday Problem, is the surprisingly high
 probability that two people will have the same birthday even in a small group of people.
 In a group of 70 people, there's a 99.9 percent chance of two people having a matching
@@ -23,7 +26,7 @@ simulations) to explore this concept.
 
 def get_birthdays(number_of_birthdays):
     """Returns a list of random date objects for birthdays"""
-    birthdays = []
+    bdays = []
     for i in range(number_of_birthdays):
         # The year is not important in the simulation as long as
         # all birthdays have the same year.
@@ -31,14 +34,14 @@ def get_birthdays(number_of_birthdays):
 
         # Get a random day into the year.
         random_number_of_days = datetime.timedelta(random.randint(0, 364))
-        birthday = start_of_year + random_number_of_days
-        birthdays.append(birthday)
+        bday = start_of_year + random_number_of_days
+        bdays.append(bday)
     return birthdays
 
-def get_match(birthdays):
+def get_match(bdays):
     """Returns the date object of a birthday that occurs more than once
     in the birthdays list."""
-    if len(birthdays) == len(set(birthdays)):
+    if len(bdays) == len(set(bdays)):
         return None
 
     # Compare each birthday to every other birthday
@@ -61,8 +64,8 @@ print()
 # Generate and display the birthdays
 print(f"Here are {num_bdays} birthdays:")
 birthdays = get_birthdays(num_bdays)
-for i, birthday in enumerate(birthdays):
-    if i != 0:
+for j, birthday in enumerate(birthdays):
+    if j != 0:
         print(", ",  end="")
     month_name = MONTHS[birthday.month - 1]
     date_text = f"{month_name} {birthday.day}"
@@ -89,10 +92,10 @@ input("Press Enter to begin...")
 
 print("Let's run another 100,000 simulations.")
 sim_match = 0 # How many simulations had matching birthdays in them
-for i in range(100000):
+for k in range(100000):
     # Report on the progress every 10,000 simulations
-    if i % 10000 == 0:
-        print(i, "simulations run...")
+    if k % 10000 == 0:
+        print(k, "simulations run...")
     birthdays = get_birthdays(num_bdays)
     if get_match(birthdays) is not None:
         sim_match = sim_match + 1
